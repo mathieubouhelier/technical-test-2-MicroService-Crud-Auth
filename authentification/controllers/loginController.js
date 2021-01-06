@@ -1,10 +1,10 @@
 const express = require('express');
 const { User } = require('../models');
-// const createToken = require('../auth/createJWT');
+const createToken = require('../auth/createJWT');
 
 const router = express.Router();
 // const userValidation = require('../middlewares/userValidation');
-const token = 'tokenTest';
+// const token = 'tokenTest';
 
 // router.post('/', userValidation.loginDataValidation, async (req, res) => {
 router.post('/', async (req, res) => {
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Campos inválidos' });
     }
     const { password: _, ...userWithoutPassword } = emailFromDB;
-    // const token = await createToken(userWithoutPassword);
+    const token = await createToken(userWithoutPassword);
     return res.status(200).json({ token });
   } catch (e) {
     console.log(e.message);
