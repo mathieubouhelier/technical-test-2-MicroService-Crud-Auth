@@ -1,6 +1,8 @@
 const express = require('express');
 const { User } = require('../models');
 const createToken = require('../auth/createJWT');
+const { validateJWT } = require('../auth/validateJWT');
+
 
 const router = express.Router();
 const userValidation = require('../middlewares/userValidation');
@@ -24,6 +26,15 @@ router.post(
       console.log(e.message);
       res.status(500).send({ message: 'Erro ao salvar o usuário no banco' });
     }
+  },
+);
+
+router.get(
+  '/',
+  validateJWT,
+  async (req, res) => {
+    const users = await User.findAll();
+    res.status(200).json(users);
   },
 );
 

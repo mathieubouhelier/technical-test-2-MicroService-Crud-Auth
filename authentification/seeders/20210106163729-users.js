@@ -10,6 +10,7 @@ module.exports = {
           displayName: 'user1',
           email: 'user1@gmail.com',
           password: '123',
+          authNumber: 1111,
         },
         {
           id: 2,

@@ -8,7 +8,7 @@
     "start": "nodemon index.js",
     "drop": "npx sequelize-cli db:drop $",
     "seed": "npx sequelize-cli db:seed:all $",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,12 @@
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.2.0"
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "frisby": "^2.1.2",
+    "jest": "^26.0.1",
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^4.0.2"
   }
 }

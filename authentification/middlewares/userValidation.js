@@ -9,6 +9,7 @@ const schema = Joi.object({
 
 const schemaLogin = Joi.object({
   email: Joi.string().email().required(),
+  password: Joi.string().required(),
 });
 
 // Check if POST create User request contain correct data
@@ -24,8 +25,8 @@ const userDataValidation = async (req, res, next) => {
 
 // Check if POST Login request contain correct data
 const loginDataValidation = async (req, res, next) => {
-  const { email } = req.body;
-  const { error } = schemaLogin.validate({ email });
+  const { email, password } = req.body;
+  const { error } = schemaLogin.validate({ email, password });
   if (error) {
     return res.status(400).json({ message: error.message });
   }

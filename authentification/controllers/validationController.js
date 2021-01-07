@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
   try {
     const { email, authNumber } = req.body;
     const emailFromDB = await User.findOne({ where: { email } });
-console.log(emailFromDB.authNumber, authNumber);
+
     if (!emailFromDB || emailFromDB.authNumber !== authNumber) {
       return res.status(400).json({ message: 'dados inválidos' });
     }
