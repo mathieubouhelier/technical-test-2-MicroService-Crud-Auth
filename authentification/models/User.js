@@ -3,6 +3,7 @@ const createUser = (sequelize, DataTypes) => {
     displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    authNumber: DataTypes.INTEGER,
   });
 
   return User;

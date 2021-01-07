@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config({ path: './../.env' });
 
-const secret = 'projectTestGptw';
+const secret = process.env.SECRET;
 function createToken(payload) {
   const headers = {
     expiresIn: '15m',

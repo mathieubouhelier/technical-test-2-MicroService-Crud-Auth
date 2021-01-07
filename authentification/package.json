@@ -19,6 +19,7 @@
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.17",
     "nodemon": "^2.0.6",
     "routes": "^2.1.0",
     "sequelize": "^6.3.5",
