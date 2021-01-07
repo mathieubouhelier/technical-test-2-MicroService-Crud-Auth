@@ -14,8 +14,8 @@ router.post(
   rescue(async (req, res) => {
     const { name, price } = req.body;
     const product = { name, price };
-    await Products.create(product);
-    return res.status(201).json(product);
+    const createdProduct = await Products.create(product);
+    return res.status(201).json(createdProduct);
   }),
 );
 
@@ -28,82 +28,56 @@ router.get(
   }),
 );
 
-// router.get(
-//   '/search',
-//   validateJWT,
-//   rescue(async (req, res) => {
-//     const { q } = req.query;
+router.get(
+  '/:id',
+  validateJWT,
+  rescue(async (req, res) => {
+    const id = req.params.id;
+    const product = await Products.findOne({ where: { id } });
+    if (product === null) {
+      res.status(404).json({ message: 'Post não existe' });
+    }
+    res.status(200).json(product);
+  }),
+);
 
-//     const searchedPost = await Posts.findAll({
-//       where: {
-//         [Op.or]: [
-//           { title: { [Op.like]: `%${q}%` } },
-//           { content: { [Op.like]: `%${q}%` } },
-//         ],
-//       },
-//       include: 'user',
-//     });
+router.put(
+  '/:id',
+  validateJWT,
+  productValidation.productDataValidation,
+  rescue(async (req, res) => {
+    const { name, price } = req.body;
+    const productData = { name, price };
 
-//     return res.status(200).json(searchedPost);
-//   }),
-// );
+    const id = req.params.id;
+    const product = await Products.findOne({ where: { id } });
 
-// router.get(
-//   '/:id',
-//   validateJWT,
-//   rescue(async (req, res) => {
-//     const product = await Posts.findByPk(req.params.id, {
-//       include: { model: User, as: 'user' },
-//     });
-//     if (product === null) {
-//       res.status(404).json({ message: 'Post não existe' });
-//     }
-//     res.status(200).json(product);
-//   }),
-// );
+    if (!product) {
+      return res.status(401).json({ message: 'Produto não encontrado' });
+    }
+    await Products.update(productData, {
+      where: { id },
+    });
+    const updatedProduct = await Products.findOne({ where: { id } });
+    return res.status(200).json(updatedProduct);
+  }),
+);
 
-// router.put(
-//   '/:id',
-//   validateJWT,
-//   blogValidation.blogDataValidation,
-//   rescue(async (req, res) => {
-//     const { title, content } = req.body;
-//     const post = { title, content, userId: req.data.dataValues.id };
+router.delete(
+  '/:id',
+  validateJWT,
+  rescue(async (req, res) => {
+    const id = req.params.id;
+    const product = await Products.findOne({ where: { id } });
+    if (!product) {
+      return res.status(404).json({ message: 'Produto não existe' });
+    }
+    await Products.destroy({
+      where: { id },
+    });
 
-//     const userId = req.data.dataValues.id;
-//     const product = await Posts.findByPk(req.params.id, {
-//       include: { model: User, as: 'user' },
-//     });
-//     if (userId !== product.userId) {
-//       return res.status(401).json({ message: 'Usuário não autorizado' });
-//     }
-//     await Posts.update(post, {
-//       where: { id: req.params.id },
-//     });
-//     return res.status(200).json(post);
-//   }),
-// );
-
-// router.delete(
-//   '/:id',
-//   validateJWT,
-//   rescue(async (req, res) => {
-//     const userId = req.data.dataValues.id;
-//     const product = await Posts.findByPk(req.params.id, {
-//       include: { model: User, as: 'user' },
-//     });
-//     if (product === null) {
-//       return res.status(404).json({ message: 'Post não existe' });
-//     }
-//     if (userId !== product.userId) {
-//       return res.status(401).json({ message: 'Usuário não autorizado' });
-//     }
-//     await Posts.destroy({
-//       where: { id: req.params.id },
-//     });
-
-//     return res.status(204).json({ message: 'Blog excluído com sucesso' });
-//   }),
-// );
+    return res.status(205).json({ message: 'Produto excluído com sucesso' });
+  }),
+);
 
 module.exports = router;
