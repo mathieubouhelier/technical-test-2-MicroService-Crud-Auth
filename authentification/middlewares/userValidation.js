@@ -12,10 +12,26 @@ const schemaLogin = Joi.object({
   password: Joi.string().required(),
 });
 
+const schemaValidation = Joi.object({
+  email: Joi.required(),
+  authNumber: Joi.required(),
+});
+
 // Check if POST create User request contain correct data
 const userDataValidation = async (req, res, next) => {
   const { displayName, email, password } = req.body;
   const { error } = schema.validate({ displayName, email, password });
+  if (error) {
+    return res.status(400).json({ message: error.message });
+  }
+
+  next();
+};
+
+// Check if POST validation request contain correct data
+const emailAuthNumberExist = async (req, res, next) => {
+  const { email, authNumber } = req.body;
+  const { error } = schemaValidation.validate({ email, authNumber });
   if (error) {
     return res.status(400).json({ message: error.message });
   }
@@ -50,4 +66,5 @@ module.exports = {
   emailAlreadyExist,
   userDataValidation,
   loginDataValidation,
+  emailAuthNumberExist,
 };

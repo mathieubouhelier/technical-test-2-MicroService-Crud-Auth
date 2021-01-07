@@ -13,11 +13,12 @@ router.post(
   userValidation.emailAlreadyExist, 
   async (req, res) => {
     try {
-      const { displayName, email, password } = req.body;
+      const { displayName, email, password, authNumber } = req.body;
       const emailFromDB = await User.create({
         displayName,
         email,
         password,
+        authNumber,
       });
       const { password: _, ...userWithoutPassword } = emailFromDB;
       const token = await createToken(userWithoutPassword);

@@ -8,10 +8,4 @@ In production, set all production Environment variables used by the app
 process.env.NODE_ENV !== 'production'
 
 
-test validation 
-add test token with getall
 
-test user controle
-test user 
-post 
-get

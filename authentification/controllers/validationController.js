@@ -5,7 +5,9 @@ const createToken = require('../auth/createJWT');
 const router = express.Router();
 const userValidation = require('../middlewares/userValidation');
 
-router.post('/', async (req, res) => {
+router.post('/', 
+userValidation.emailAuthNumberExist,
+async (req, res) => {
   try {
     const { email, authNumber } = req.body;
     const emailFromDB = await User.findOne({ where: { email } });
@@ -19,7 +21,7 @@ router.post('/', async (req, res) => {
     return res.status(200).json({ token });
   } catch (e) {
     console.log(e.message);
-    res.status(500).send({ message: 'Erro ao logar o usuário no banco' });
+    res.status(500).send({ message: 'Erro a validar o usuário no banco' });
   }
 });
 

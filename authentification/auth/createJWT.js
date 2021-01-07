@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 
 const secret = process.env.SECRET;
 function createToken(payload) {
-  console.log(secret);
   const headers = {
     expiresIn: '15m',
     algorithm: 'HS256',
