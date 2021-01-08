@@ -6,10 +6,10 @@ const router = express.Router();
 const userValidation = require('../middlewares/userValidation');
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: process.env.EMAIL_SERVICE,
   auth: {
-    user: 'testegptw@gmail.com',
-    pass: '14!gklwp54',
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -30,7 +30,7 @@ router.post('/', userValidation.loginDataValidation, async (req, res) => {
       },
     );
     const mailOptions = {
-      from: 'testegptw@gmail.com',
+      from: process.env.EMAIL_USER,
       to: email,
       subject: 'Sending Email using Node.js',
       text: `seu codigo é ${authNumber}`,
@@ -38,13 +38,13 @@ router.post('/', userValidation.loginDataValidation, async (req, res) => {
 
     // module to send email
 
-    // transporter.sendMail(mailOptions, function(error, info){
-    //   if (error) {
-    //     console.log(error);
-    //   } else {
-    //     console.log('Email sent: ' + info.response);
-    //   }
-    // });
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
     return res.status(200).send({ message: 'Email e senha validos' });
   } catch (e) {
     console.log(e.message);
