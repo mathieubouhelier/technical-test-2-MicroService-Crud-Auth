@@ -10,6 +10,9 @@
     "start": "npm run start-authentification && npm run start-crud",
     "start-authentification": "npm --prefix authentification/ run start&",
     "start-crud": "npm --prefix crud/ run start&",
+    "dev": "npm run dev-authentification && npm run dev-crud",
+    "dev-authentification": "npm --prefix authentification/ run dev&",
+    "dev-crud": "npm --prefix crud/ run dev&",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

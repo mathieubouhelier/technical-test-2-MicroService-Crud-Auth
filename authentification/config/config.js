@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production'){
+if (process.env.NODE_ENV !== 'production') {
   const dotenv = require('dotenv');
   dotenv.config({ path: './../.env' });
 }
@@ -19,8 +19,8 @@ module.exports = {
     dialect: 'mysql',
   },
   production: {
-    username: 'root',
-    password: null,
+    username: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
     database: 'auth_gptw',
     host: process.env.HOSTNAME,
     dialect: 'mysql',
