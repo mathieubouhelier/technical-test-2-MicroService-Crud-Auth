@@ -44,7 +44,6 @@ router.get(
 router.put(
   '/:id',
   validateJWT,
-  productValidation.productDataValidation,
   rescue(async (req, res) => {
     const { name, price } = req.body;
     const productData = { name, price };

@@ -10,7 +10,7 @@ describe('Deve ter o endpoint POST `/login`', () => {
     shell.exec('npx sequelize-cli db:seed:all $');
   });
 
-  it.skip('Será validado que é possível fazer login com sucesso', async () => {
+  it('Será validado que é possível fazer login com sucesso', async () => {
     await frisby
       .post(`${url}/login`,
         {
@@ -25,7 +25,7 @@ describe('Deve ter o endpoint POST `/login`', () => {
       });
   });
 
-  it.skip('Será validado que não é possível fazer login sem o campo `email`', async () => {
+  it('Será validado que não é possível fazer login sem o campo `email`', async () => {
     await frisby
       .post(`${url}/login`,
         {
@@ -39,7 +39,7 @@ describe('Deve ter o endpoint POST `/login`', () => {
       });
   });
 
-  it.skip('Será validado que não é possível fazer login sem o campo `password`', async () => {
+  it('Será validado que não é possível fazer login sem o campo `password`', async () => {
     await frisby
       .post(`${url}/login`,
         {
@@ -53,7 +53,7 @@ describe('Deve ter o endpoint POST `/login`', () => {
       });
   });
 
-  it.skip('Será validado que não é possível fazer login com um usuário que não existe', async () => {
+  it('Será validado que não é possível fazer login com um usuário que não existe', async () => {
     await frisby
       .post(`${url}/login`,
         {

@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 const userValidation = require('../middlewares/userValidation');
 
+// Parameters to set nodemailer (email sender)
 const transporter = nodemailer.createTransport({
   service: process.env.EMAIL_SERVICE,
   auth: {
@@ -38,7 +39,7 @@ router.post('/', userValidation.loginDataValidation, async (req, res) => {
 
     // module to send email
 
-    transporter.sendMail(mailOptions, function(error, info){
+    transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
       } else {

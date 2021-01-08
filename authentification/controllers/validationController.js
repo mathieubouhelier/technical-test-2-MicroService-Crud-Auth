@@ -5,9 +5,7 @@ const createToken = require('../auth/createJWT');
 const router = express.Router();
 const userValidation = require('../middlewares/userValidation');
 
-router.post('/', 
-userValidation.emailAuthNumberExist,
-async (req, res) => {
+router.post('/', userValidation.emailAuthNumberExist, async (req, res) => {
   try {
     const { email, authNumber } = req.body;
     const emailFromDB = await User.findOne({ where: { email } });

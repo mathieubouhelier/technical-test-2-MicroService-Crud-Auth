@@ -3,14 +3,13 @@ const { User } = require('../models');
 const createToken = require('../auth/createJWT');
 const { validateJWT } = require('../auth/validateJWT');
 
-
 const router = express.Router();
 const userValidation = require('../middlewares/userValidation');
 
 router.post(
   '/',
   userValidation.userDataValidation,
-  userValidation.emailAlreadyExist, 
+  userValidation.emailAlreadyExist,
   async (req, res) => {
     try {
       const { displayName, email, password, authNumber } = req.body;
@@ -30,13 +29,9 @@ router.post(
   },
 );
 
-router.get(
-  '/',
-  validateJWT,
-  async (req, res) => {
-    const users = await User.findAll();
-    res.status(200).json(users);
-  },
-);
+router.get('/', validateJWT, async (req, res) => {
+  const users = await User.findAll();
+  res.status(200).json(users);
+});
 
 module.exports = router;
