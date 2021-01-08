@@ -1,15 +1,16 @@
 # Welcome to testGPTW
 
-## How to use this app
+## How to use this app?
 1. Clone the project
 2. Install the dependencies
 * run npm install in the root, authentification and crud directories
-3. Create an .env at the root and fill it (use .env.example as an example)
+3. Create an .`env` at the root and fill it (use `.env.example` as an example)
 4. Start the app
-* Run at the root "npm run dev"
+* Run at the root `npm run dev`
 
-## What it is about ?
+## What it is about?
 This is a technical test to develop two micro service, one is about authentification and the second one is a basic CRUD
+
 ### authentification
 This is a 3 endpoints API
 1. /user
@@ -28,15 +29,20 @@ This is a 1 endpoint API /product
 4. To update one specific product
 5. To remove one specific product
 
-## How to work in development and production Environment
-- In development environment, the microservice will use Environment variables defined in the file .env
+## How to work in development and production Environment?
+- In development environment, the microservice will use Environment variables defined in the file `.env`
 - In production environment, the microservice will use Environment variables defined in the production environment (AWS, Heroku…)
 
 ### To run in development environment
-1. Create and fill a file .env (at the root). One example is available .env.example at the root
-2. Execute npm run dev   
+1. Create and fill a file `.env` (at the root). One example is available `.env.example` at the root
+2. Execute `npm run dev`   
 
 ### To run in production environment
-1. Define the Environment variable in production NODE_ENV = production
-2. Define in production environment all Environment variables used by the app (list of is available .env.example at the root)
+1. Define the Environment variable in production `NODE_ENV = production`
+2. Define in production environment all Environment variables used by the app (list of is available `.env.example` at the root)
 
+## How to perform the tests?
+* Tests are inside the authentification/tests
+* To run the tests, inside the directory authentification, 
+1. Execute `npm run dev`
+2. Execute `npm test`
