@@ -10,7 +10,7 @@ describe('Deve ter o endpoint GET `/user`', () => {
     shell.exec('npx sequelize-cli db:seed:all $');
   });
 
-  it.skip('Será validado que é possível listar todos os usuários', async () => {
+  it('Será validado que é possível listar todos os usuários', async () => {
     await frisby
       .post(`${url}/validation`, {
         email: 'user1@gmail.com',
@@ -42,7 +42,7 @@ describe('Deve ter o endpoint GET `/user`', () => {
       });
   });
 
-  it.skip('Será validado que não é possível listar todos os usuários com token invalido', async () => {
+  it('Será validado que não é possível listar todos os usuários com token invalido', async () => {
     await frisby
       .setup({
         request: {
@@ -60,7 +60,7 @@ describe('Deve ter o endpoint GET `/user`', () => {
       });
   });
 
-  it.skip('Será validado que é possível postar um usuário', async () => {
+  it('Será validado que é possível postar um usuário', async () => {
     await frisby
       .post(`${url}/user`, {
         displayName: 'user4ForTest',

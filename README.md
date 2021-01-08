@@ -1,11 +1,12 @@
 # testGPTW
-# testGPTW
-work local use a .env file a the root
-fill .env file with all your local Environment variables 
-In production, set all production Environment variables used by the app
+
+This is a technical test to develop two micro service,one for authentification and the second one is a basic CRUD
 
 
-process.env.NODE_ENV !== 'production'
-
+## to use this app
+Clone the project
+run npm install in the root, authentification and crud directories
+create an .env at the root and fill it (use .env.example as an example)
+run at the root "npm run dev"
 
 

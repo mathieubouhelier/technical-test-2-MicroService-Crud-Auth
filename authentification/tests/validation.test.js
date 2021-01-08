@@ -10,7 +10,7 @@ describe('Deve ter o endpoint POST `/validation`', () => {
     shell.exec('npx sequelize-cli db:seed:all $');
   });
 
-  it.skip('Será validado que é possível fazer validation com sucesso', async () => {
+  it('Será validado que é possível fazer validation com sucesso', async () => {
     await frisby
       .post(`${url}/validation`, {
         email: 'user1@gmail.com',
@@ -40,7 +40,7 @@ describe('Deve ter o endpoint POST `/validation`', () => {
       });
   });
 
-  it.skip('Será validado que não é possível validar sem o campo `email`', async () => {
+  it('Será validado que não é possível validar sem o campo `email`', async () => {
     await frisby
     .post(`${url}/validation`, {
       authNumber: 1111,
@@ -53,7 +53,7 @@ describe('Deve ter o endpoint POST `/validation`', () => {
       });
   });
 
-  it.skip('Será validado que não é possível validar sem o campo `authNumber`', async () => {
+  it('Será validado que não é possível validar sem o campo `authNumber`', async () => {
     await frisby
     .post(`${url}/validation`, {
       email: 'user1@gmail.com',
@@ -66,7 +66,7 @@ describe('Deve ter o endpoint POST `/validation`', () => {
       });
   });
 
-  it.skip('Será validado que não é possível validar com o campo `authNumber` errado', async () => {
+  it('Será validado que não é possível validar com o campo `authNumber` errado', async () => {
     await frisby
     .post(`${url}/validation`, {
       email: 'user1@gmail.com',
