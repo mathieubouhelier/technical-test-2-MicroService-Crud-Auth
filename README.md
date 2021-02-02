@@ -1,4 +1,4 @@
-# Confidential Technical test: develop two micro service, authentification and a basic CRUD
+# Confidential company technical test: develop two micro service, authentification and a basic CRUD
 
 ## How to use this app?
 1. Clone the project
