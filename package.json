@@ -1,5 +1,5 @@
 {
-  "name": "testGPTW",
+  "name": "test2microservices",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,13 +17,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mathieubouhelier/testGPTW.git"
+    "url": "git+https://github.com/mathieubouhelier/technical-test-2-MicroService-Crud-Auth"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mathieubouhelier/testGPTW/issues"
+    "url": "https://github.com/mathieubouhelier/technical-test-2-MicroService-Crud-Auth/issues"
   },
-  "homepage": "https://github.com/mathieubouhelier/testGPTW#readme"
+  "homepage": "https://github.com/mathieubouhelier/technical-test-2-MicroService-Crud-Auth#readme"
 }
