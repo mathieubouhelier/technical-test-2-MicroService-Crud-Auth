@@ -1,4 +1,4 @@
-# Welcome to testGPTW
+# Welcome to my project responding to a Technical Assesement: develop two micro service, authentification and a basic CRUD
 
 ## How to use this app?
 1. Clone the project
