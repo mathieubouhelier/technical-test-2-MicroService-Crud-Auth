@@ -1,4 +1,4 @@
-# Confidential company technical test: develop two micro service, authentification and a basic CRUD
+# My project to a technical test: develop two micro service, authentification and a basic CRUD
 
 ## How to use this app?
 1. Clone the project
@@ -9,7 +9,7 @@
 * Run at the root `npm run dev`
 
 ## What it is about?
-This is a technical test to develop two micro service, one is about authentification and the second one is a basic CRUD
+This is a project I developed to respond to a technical test during a recruiting process to develop two micro service, one is about authentification and the second one is a basic CRUD
 
 ### authentification
 This is a 3 endpoints API
