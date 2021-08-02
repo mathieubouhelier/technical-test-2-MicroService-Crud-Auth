@@ -1,4 +1,4 @@
-# My project for a technical test: develop two micro service, authentification and a basic CRUD
+# My project for a technical test was to develop two micro services: authentification and a basic CRUD
 
 ## How to use this app?
 1. Clone the project
